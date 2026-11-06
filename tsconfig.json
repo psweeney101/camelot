@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compileOnSave": false,
+  "files": [],
+  "include": ["eslint.config.ts", "**/eslint.config.ts"],
+  "references": [
+    {
+      "path": "./libs/components"
+    }
+  ]
+}

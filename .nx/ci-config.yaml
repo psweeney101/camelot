@@ -1,0 +1,12 @@
+# Nx Cloud reads this file to configure your CI Pipeline Executions.
+# Uncomment the "npx nx-cloud start-workers" line in your CI workflow to distribute tasks across workers.
+# Learn how to start Nx Workers at https://nx.dev/docs/reference/nx-cloud-cli#nx-cloud-start-workers
+# Learn how to configure this file at https://nx.dev/docs/reference/nx-cloud/ci-config
+dte:
+  distribute-on: 4 linux-medium-js
+lifecycle:
+  stop-after:
+    - lint
+    - stylelint
+    - test
+    - build

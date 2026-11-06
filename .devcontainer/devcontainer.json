@@ -1,0 +1,35 @@
+{
+  "name": "Camelot",
+  "dockerComposeFile": "docker-compose.yaml",
+  "service": "devcontainer",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": ["devcontainer:4200"],
+  "features": {
+    "ghcr.io/devcontainers/features/node:2": {
+      "nodeGypDependencies": false,
+      "npmVersion": "latest",
+      "pnpmVersion": "none"
+    }
+  },
+  "postCreateCommand": ".devcontainer/postCreateCommand.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Angular.ng-template",
+        "dbaeumer.vscode-eslint",
+        "EditorConfig.EditorConfig",
+        "esbenp.prettier-vscode",
+        "nrwl.angular-console",
+        "stylelint.vscode-stylelint"
+      ],
+      "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": ["source.fixAll"],
+        "stylelint.validate": ["css", "scss"],
+        "diffEditor.ignoreTrimWhitespace": false,
+        "dev.containers.copyGitConfig": true
+      }
+    }
+  }
+}
