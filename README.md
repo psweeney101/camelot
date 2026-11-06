@@ -27,13 +27,19 @@ npm run clean
 #### Add Components
 
 ```bash
-npx shadcn@latest add -c libs/components <component-name>
+npx shadcn@latest add -c libs/design <component-name>
 ```
 
 #### Update Components
 
 ```bash
-npx shadcn@latest diff -c libs/components
+npx shadcn@latest diff -c libs/design
+```
+
+#### Add Story to a Component
+
+```bash
+nx generate @nx/react:component-story --project @camelot/design --interactionTests false --componentPath lib/components/button.tsx
 ```
 
 ### 🆙 Upgrade

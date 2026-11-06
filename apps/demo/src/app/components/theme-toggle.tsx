@@ -1,4 +1,3 @@
-import { Moon, Sun } from 'lucide-react';
 import {
   useTheme,
   Button,
@@ -6,7 +5,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@camelot/components';
+} from '@camelot/design';
+import { Moon, Sun } from 'lucide-react';
 
 export function ThemeToggle() {
   const { setTheme } = useTheme();

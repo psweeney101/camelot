@@ -5,7 +5,7 @@
   "include": ["eslint.config.ts", "**/eslint.config.ts"],
   "references": [
     {
-      "path": "./libs/components"
+      "path": "./libs/design"
     }
   ]
 }

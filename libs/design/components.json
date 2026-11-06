@@ -11,8 +11,8 @@
     "cssVariables": true
   },
   "aliases": {
-    "components": "#lib",
+    "components": "#lib/components",
     "utils": "#lib/utils",
-    "ui": "#lib"
+    "ui": "#lib/components"
   }
 }

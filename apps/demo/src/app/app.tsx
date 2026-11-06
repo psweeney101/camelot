@@ -1,4 +1,4 @@
-import { Button, ThemeProvider } from '@camelot/components';
+import { Button, ThemeProvider } from '@camelot/design';
 import { ThemeToggle } from './components/theme-toggle';
 
 export function App() {

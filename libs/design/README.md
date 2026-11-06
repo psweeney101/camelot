@@ -1,3 +1,3 @@
-# @camelot/components
+# @camelot/design
 
 This library was generated with [Nx](https://nx.dev).

@@ -38,7 +38,7 @@ export default defineConfig([
     ],
     settings: {
       'better-tailwindcss': {
-        entryPoint: 'src/theme.css',
+        entryPoint: 'src/lib/theme.css',
       },
     },
     rules: {
@@ -73,26 +73,16 @@ export default defineConfig([
       'import/order': [
         'error',
         {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-            'object',
-            'type',
-          ],
           pathGroups: [
             {
               pattern: '@camelot/**',
-              group: 'internal',
-              position: 'before',
+              group: 'external',
+              position: 'after',
             },
           ],
-          pathGroupsExcludedImportTypes: ['builtin'],
           alphabetize: {
             order: 'asc',
+            orderImportKind: 'asc',
           },
           'newlines-between': 'never',
         },
