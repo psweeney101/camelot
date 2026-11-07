@@ -27,16 +27,12 @@ export default meta;
 
 type Story = StoryObj<typeof DropdownMenu>;
 
-const trigger = (
-  <DropdownMenuTrigger render={<Button variant="outline" />}>
-    Open
-  </DropdownMenuTrigger>
-);
-
 export const Primary = {
-  render: (args) => (
+  render: args => (
     <DropdownMenu {...args}>
-      {trigger}
+      <DropdownMenuTrigger render={<Button variant="outline" />}>
+        Open
+      </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuGroup>
           <DropdownMenuLabel>My account</DropdownMenuLabel>
@@ -53,60 +49,27 @@ export const Primary = {
           <DropdownMenuItem disabled>Billing</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem variant="destructive">
-          <LogOutIcon />
-          Log out
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  ),
-} satisfies Story;
-
-export const Checkboxes = {
-  render: (args) => (
-    <DropdownMenu {...args}>
-      {trigger}
-      <DropdownMenuContent>
         <DropdownMenuCheckboxItem defaultChecked>
           Show toolbar
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem>Show sidebar</DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem disabled>
-          Show footer
-        </DropdownMenuCheckboxItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  ),
-} satisfies Story;
-
-export const RadioGroup = {
-  render: (args) => (
-    <DropdownMenu {...args}>
-      {trigger}
-      <DropdownMenuContent>
-        <DropdownMenuRadioGroup defaultValue="system">
-          <DropdownMenuRadioItem value="light">Light</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="dark">Dark</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="system">System</DropdownMenuRadioItem>
-        </DropdownMenuRadioGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  ),
-} satisfies Story;
-
-export const Submenu = {
-  render: (args) => (
-    <DropdownMenu {...args}>
-      {trigger}
-      <DropdownMenuContent>
-        <DropdownMenuItem>New file</DropdownMenuItem>
         <DropdownMenuSub>
-          <DropdownMenuSubTrigger>Share</DropdownMenuSubTrigger>
+          <DropdownMenuSubTrigger>Theme</DropdownMenuSubTrigger>
           <DropdownMenuSubContent>
-            <DropdownMenuItem>Email</DropdownMenuItem>
-            <DropdownMenuItem>Copy link</DropdownMenuItem>
+            <DropdownMenuRadioGroup defaultValue="system">
+              <DropdownMenuRadioItem value="light">Light</DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="dark">Dark</DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="system">
+                System
+              </DropdownMenuRadioItem>
+            </DropdownMenuRadioGroup>
           </DropdownMenuSubContent>
         </DropdownMenuSub>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem variant="destructive">
+          <LogOutIcon />
+          Log out
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   ),

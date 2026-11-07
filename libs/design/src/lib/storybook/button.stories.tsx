@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { getSchema } from 'cva/tools';
-import { HomeIcon } from 'lucide-react';
+import { SaveIcon } from 'lucide-react';
 import { Button, buttonVariants } from '../components/button';
 import { getStoryMeta } from '../utils';
 
@@ -20,10 +20,25 @@ export const Text = {} satisfies Story;
 
 export const Icon = {
   args: {
-    children: <HomeIcon />,
+    children: <SaveIcon />,
     size: 'icon',
   },
   argTypes: {
-    children: { control: false },
+    children: { table: { disable: true } },
   },
+} satisfies Story;
+
+export const TextWithIcon = {
+  render: args => (
+    <div className="flex gap-2">
+      <Button {...args}>
+        {args.children}
+        <SaveIcon data-icon="inline-start" />
+      </Button>
+      <Button {...args}>
+        <SaveIcon data-icon="inline-end" />
+        {args.children}
+      </Button>
+    </div>
+  ),
 } satisfies Story;

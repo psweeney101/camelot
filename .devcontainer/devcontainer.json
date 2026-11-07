@@ -3,7 +3,7 @@
   "dockerComposeFile": "docker-compose.yaml",
   "service": "devcontainer",
   "workspaceFolder": "/workspace",
-  "forwardPorts": ["devcontainer:4200"],
+  "forwardPorts": ["devcontainer:4200", "devcontainer:6006"],
   "features": {
     "ghcr.io/devcontainers/features/node:2": {
       "nodeGypDependencies": false,

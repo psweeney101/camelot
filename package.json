@@ -14,7 +14,6 @@
     "check": "sort-package-json **/package.json --check; nx format:check; nx run-many -t lint stylelint test build",
     "clean": "sort-package-json **/package.json; nx format:write; nx run-many -t lint stylelint --fix; nx run-many -t test build",
     "prepare": "husky",
-    "sort-package-json": "",
     "start": "nx run-many -t serve, storybook"
   },
   "allowScripts": {

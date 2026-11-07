@@ -12,8 +12,11 @@ const config: StorybookConfig = {
     name: getAbsolutePath('@storybook/react-vite'),
     options: {},
   },
+  core: {
+    allowedHosts: ['0.0.0.0'],
+  },
 
-  viteFinal: (config) =>
+  viteFinal: config =>
     mergeConfig(config, {
       resolve: {
         tsconfigPaths: true,

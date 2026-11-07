@@ -12,7 +12,7 @@ export default defineConfig({
   },
   server: {
     port: 4200,
-    host: '127.0.0.1',
+    host: '0.0.0.0',
   },
   build: {
     outDir: '../../dist/apps/demo',
