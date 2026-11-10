@@ -16,6 +16,7 @@
     "vscode": {
       "extensions": [
         "Angular.ng-template",
+        "bradlc.vscode-tailwindcss",
         "dbaeumer.vscode-eslint",
         "EditorConfig.EditorConfig",
         "esbenp.prettier-vscode",
@@ -27,6 +28,12 @@
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": ["source.fixAll"],
         "stylelint.validate": ["css", "scss"],
+        "editor.quickSuggestions": {
+          "strings": "on"
+        },
+        "files.associations": {
+          "*.css": "tailwindcss"
+        },
         "diffEditor.ignoreTrimWhitespace": false,
         "dev.containers.copyGitConfig": true
       }

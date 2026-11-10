@@ -67,6 +67,7 @@ export default defineConfig([
           ignoreStatic: true,
         },
       ],
+      'better-tailwindcss/enforce-consistent-line-wrapping': 'off',
       ...imports.flatConfigs.recommended.rules,
       'import/named': 'off',
       'import/no-unresolved': 'off',
