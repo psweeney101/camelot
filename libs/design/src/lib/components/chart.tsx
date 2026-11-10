@@ -216,8 +216,8 @@ function ChartTooltipContent({
           .map((item, index) => {
             const key = `${nameKey ?? item.name ?? item.dataKey?.toString() ?? 'value'}`;
             const itemConfig = getPayloadConfigFromPayload(config, item, key);
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-            const indicatorColor = color ?? item.payload?.fill ?? item.color;
+            const indicatorColor =
+              color ?? getStringProp(item.payload, 'fill') ?? item.color;
 
             return (
               <div
@@ -231,7 +231,13 @@ function ChartTooltipContent({
                 )}
               >
                 {formatter && item?.value !== undefined && item.name ? (
-                  formatter(item.value, item.name, item, index, item.payload)
+                  formatter(
+                    item.value,
+                    item.name,
+                    item,
+                    index,
+                    item.payload as typeof payload,
+                  )
                 ) : (
                   <>
                     {itemConfig?.icon ? (
@@ -241,7 +247,7 @@ function ChartTooltipContent({
                         <div
                           className={cn(
                             `
-                              shrink-0 rounded-[2px] border-border
+                              shrink-0 rounded-xs border-border
                               bg-(--color-bg)
                             `,
                             {
@@ -355,36 +361,29 @@ function ChartLegendContent({
   );
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null;
+}
+
+function getStringProp(source: unknown, key: string): string | undefined {
+  if (!isRecord(source)) {
+    return undefined;
+  }
+  const value = source[key];
+  return typeof value === 'string' ? value : undefined;
+}
+
 function getPayloadConfigFromPayload(
   config: ChartConfig,
   payload: unknown,
   key: string,
 ) {
-  if (typeof payload !== 'object' || payload === null) {
+  if (!isRecord(payload)) {
     return undefined;
   }
 
-  const payloadPayload =
-    'payload' in payload &&
-    typeof payload.payload === 'object' &&
-    payload.payload !== null
-      ? payload.payload
-      : undefined;
-
-  let configLabelKey: string = key;
-
-  if (
-    key in payload &&
-    typeof payload[key as keyof typeof payload] === 'string'
-  ) {
-    configLabelKey = payload[key as keyof typeof payload];
-  } else if (
-    payloadPayload &&
-    key in payloadPayload &&
-    typeof payloadPayload[key as keyof typeof payloadPayload] === 'string'
-  ) {
-    configLabelKey = payloadPayload[key as keyof typeof payloadPayload];
-  }
+  const configLabelKey =
+    getStringProp(payload, key) ?? getStringProp(payload.payload, key) ?? key;
 
   return configLabelKey in config ? config[configLabelKey] : config[key];
 }

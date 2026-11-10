@@ -55,21 +55,8 @@ export default defineConfig([
           ],
         },
       ],
-      '@typescript-eslint/no-empty-interface': 'off',
-      '@typescript-eslint/no-empty-object-type': 'off',
-      '@typescript-eslint/no-extraneous-class': 'off',
-      '@typescript-eslint/no-inferrable-types': 'off',
-      '@typescript-eslint/no-unsafe-argument': 'off',
-      '@typescript-eslint/no-unsafe-assignment': 'off',
-      '@typescript-eslint/unbound-method': [
-        'error',
-        {
-          ignoreStatic: true,
-        },
-      ],
       'better-tailwindcss/enforce-consistent-line-wrapping': 'off',
       ...imports.flatConfigs.recommended.rules,
-      'import/named': 'off',
       'import/no-unresolved': 'off',
       'import/order': [
         'error',
