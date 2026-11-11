@@ -106,7 +106,7 @@ function DropdownMenuItem({
       data-variant={variant}
       className={cn(
         `
-          group/dropdown-menu-item relative flex min-h-7 cursor-default
+          group/dropdown-menu-item relative flex min-h-7
           items-center gap-2 rounded-md px-2 py-1 text-xs/relaxed outline-hidden
           select-none
           focus:bg-accent focus:text-accent-foreground
@@ -146,7 +146,7 @@ function DropdownMenuSubTrigger({
       data-inset={inset}
       className={cn(
         `
-          flex min-h-7 cursor-default items-center gap-2 rounded-md px-2 py-1
+          flex min-h-7 items-center gap-2 rounded-md px-2 py-1
           text-xs outline-hidden select-none
           focus:bg-accent focus:text-accent-foreground
           not-data-[variant=destructive]:focus:**:text-accent-foreground
@@ -214,7 +214,7 @@ function DropdownMenuCheckboxItem({
       data-inset={inset}
       className={cn(
         `
-          relative flex min-h-7 cursor-default items-center gap-2 rounded-md
+          relative flex min-h-7 items-center gap-2 rounded-md
           py-1.5 pr-8 pl-2 text-xs outline-hidden select-none
           focus:bg-accent focus:text-accent-foreground
           focus:**:text-accent-foreground
@@ -266,7 +266,7 @@ function DropdownMenuRadioItem({
       data-inset={inset}
       className={cn(
         `
-          relative flex min-h-7 cursor-default items-center gap-2 rounded-md
+          relative flex min-h-7 items-center gap-2 rounded-md
           py-1.5 pr-8 pl-2 text-xs outline-hidden select-none
           focus:bg-accent focus:text-accent-foreground
           focus:**:text-accent-foreground
