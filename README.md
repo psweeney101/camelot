@@ -12,6 +12,7 @@ CMD+Shift+P → Rebuild and Reopen in Container
 
 ```bash
 npm start
+npm run storybook
 ```
 
 ## 🧑‍💻 Contributing

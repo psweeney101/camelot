@@ -6,14 +6,13 @@
     "production": [
       "default",
       "!{projectRoot}/.eslintrc.json",
-      "!{projectRoot}/eslint.config.mjs",
-      "!{projectRoot}/.stylelintrc(.(json|yml|yaml|js))?",
+      "!{projectRoot}/eslint.config.ts",
+      "!{projectRoot}/.stylelintrc.json",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/src/test-setup.[jt]s",
-      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
-      "!{projectRoot}/.storybook/**/*",
-      "!{projectRoot}/tsconfig.storybook.json"
+      "!{projectRoot}/**/*.stories.ts",
+      "!{projectRoot}/.storybook/**/*"
     ],
     "sharedGlobals": []
   },
@@ -84,8 +83,10 @@
   "targetDefaults": {
     "stylelint": {
       "inputs": [
-        "default",
-        "{workspaceRoot}/.stylelintrc(.(json|yml|yaml|js))?"
+        "{projectRoot}/.stylelintrc.json",
+        "{workspaceRoot}/.stylelintrc.json",
+        "{projectRoot}/**/*.css",
+        "{projectRoot}/**/*.scss"
       ],
       "cache": true
     }

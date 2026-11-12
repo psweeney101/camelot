@@ -3,15 +3,12 @@
   "overrides": [
     {
       "files": ["**/*.css"],
-      "extends": ["stylelint-config-standard", "stylelint-config-tailwindcss"],
+      "extends": ["stylelint-config-standard"],
       "rules": {}
     },
     {
       "files": ["**/*.scss"],
-      "extends": [
-        "stylelint-config-standard-scss",
-        "stylelint-config-tailwindcss/scss"
-      ],
+      "extends": ["stylelint-config-standard-scss"],
       "rules": {}
     },
     {
@@ -21,6 +18,19 @@
     }
   ],
   "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["custom-variant", "source", "theme"]
+      }
+    ],
+    "at-rule-prelude-no-invalid": [
+      true,
+      {
+        "ignoreAtRules": ["apply"]
+      }
+    ],
+    "import-notation": "string",
     "no-empty-source": null
   }
 }
