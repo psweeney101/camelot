@@ -57,22 +57,9 @@ function NavigationMenuItem({
   );
 }
 
-const navigationMenuTriggerStyle = cva(
-  `
-    group/navigation-menu-trigger inline-flex h-9 w-max items-center
-    justify-center rounded-lg px-2.5 py-1.5 text-xs/relaxed font-medium
-    transition-all outline-none
-    hover:bg-muted
-    focus:bg-muted
-    focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:outline-1
-    disabled:pointer-events-none disabled:opacity-50
-    data-popup-open:bg-muted/50
-    data-popup-open:hover:bg-muted
-    data-open:bg-muted/50
-    data-open:hover:bg-muted
-    data-open:focus:bg-muted
-  `,
-);
+const navigationMenuTriggerStyle = cva({
+  base: 'group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-all outline-none hover:bg-muted focus:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-popup-open:bg-muted/50 data-popup-open:hover:bg-muted data-open:bg-muted/50 data-open:hover:bg-muted data-open:focus:bg-muted',
+});
 
 function NavigationMenuTrigger({
   className,
@@ -107,12 +94,12 @@ function NavigationMenuContent({
       data-slot="navigation-menu-content"
       className={cn(
         `
-          h-full
-          w-auto
-          p-1.5
-          transition-[opacity,transform,translate]
-          duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] group-data-[viewport=false]/navigation-menu:rounded-xl group-data-[viewport=false]/navigation-menu:bg-popover
-          group-data-[viewport=false]/navigation-menu:text-popover-foreground group-data-[viewport=false]/navigation-menu:shadow-md
+          h-full w-auto p-2 pr-2.5 transition-[opacity,transform,translate]
+          duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)]
+          group-data-[viewport=false]/navigation-menu:rounded-md
+          group-data-[viewport=false]/navigation-menu:bg-popover
+          group-data-[viewport=false]/navigation-menu:text-popover-foreground
+          group-data-[viewport=false]/navigation-menu:shadow-sm
           group-data-[viewport=false]/navigation-menu:ring-1
           group-data-[viewport=false]/navigation-menu:ring-foreground/10
           group-data-[viewport=false]/navigation-menu:duration-300
@@ -174,22 +161,17 @@ function NavigationMenuPositioner({
       >
         <NavigationMenuPrimitive.Popup
           className="
-          relative
-          h-(--popup-height) w-(--popup-width) origin-(--transform-origin)
-          rounded-xl bg-popover text-popover-foreground
-          shadow-sm ring-1 ring-foreground/10 transition-[opacity,transform,width,height,scale,translate]
-          duration-[0.35s]
-          ease-[cubic-bezier(0.22,1,0.36,1)] outline-none data-ending-style:scale-90
-          data-ending-style:opacity-0 data-ending-style:duration-150
-          data-ending-style:ease-[ease]
-          data-starting-style:scale-90 data-starting-style:opacity-0
-        "
-        >
-          <NavigationMenuPrimitive.Viewport
-            className="
-            relative size-full overflow-hidden
+            relative h-(--popup-height) w-(--popup-width)
+            origin-(--transform-origin) rounded-lg bg-popover
+            text-popover-foreground shadow-sm ring-1 ring-foreground/10
+            transition-[opacity,transform,width,height,scale,translate]
+            duration-[0.35s] ease-[cubic-bezier(0.22,1,0.36,1)] outline-none
+            data-ending-style:scale-90 data-ending-style:opacity-0
+            data-ending-style:duration-150
+            data-starting-style:scale-90 data-starting-style:opacity-0
           "
-          />
+        >
+          <NavigationMenuPrimitive.Viewport className="relative size-full overflow-hidden" />
         </NavigationMenuPrimitive.Popup>
       </NavigationMenuPrimitive.Positioner>
     </NavigationMenuPrimitive.Portal>
@@ -205,13 +187,13 @@ function NavigationMenuLink({
       data-slot="navigation-menu-link"
       className={cn(
         `
-          flex items-center gap-1.5 rounded-lg p-2 text-xs/relaxed
-          transition-all outline-none
+          flex items-center gap-1.5 rounded-md p-2 text-sm transition-all
+          outline-none
           hover:bg-muted
           focus:bg-muted
-          focus-visible:ring-2 focus-visible:ring-ring/30
+          focus-visible:ring-3 focus-visible:ring-ring/50
           focus-visible:outline-1
-          in-data-[slot=navigation-menu-content]:rounded-md
+          in-data-[slot=navigation-menu-content]:rounded-sm
           data-[active=true]:bg-muted/50
           data-[active=true]:hover:bg-muted
           data-[active=true]:focus:bg-muted
@@ -243,8 +225,8 @@ function NavigationMenuIndicator({
     >
       <div
         className="
-        relative top-[60%] size-2 rotate-45 rounded-tl-sm bg-border shadow-md
-      "
+          relative top-[60%] size-2 rotate-45 rounded-tl-sm bg-border shadow-md
+        "
       />
     </NavigationMenuPrimitive.Icon>
   );

@@ -15,12 +15,7 @@ function BubbleGroup({ className, ...props }: React.ComponentProps<'div'>) {
 }
 
 const bubbleVariants = cva({
-  base: `
-    group/bubble relative flex w-fit max-w-[80%] min-w-0 flex-col gap-1
-    group-data-[align=end]/message:self-end
-    data-[align=end]:self-end
-    data-[variant=ghost]:max-w-full
-  `,
+  base: 'group/bubble relative flex w-fit max-w-[80%] min-w-0 flex-col gap-1 group-data-[align=end]/message:self-end data-[align=end]:self-end data-[variant=ghost]:max-w-full',
   variants: {
     variant: {
       default: `
@@ -105,13 +100,13 @@ function BubbleContent({
       {
         className: cn(
           `
-            w-fit max-w-full min-w-0 overflow-hidden rounded-lg border
-            border-transparent px-2.5 py-1.5 text-xs/relaxed wrap-break-word
+            w-fit max-w-full min-w-0 overflow-hidden rounded-xl border
+            border-transparent px-3 py-2 text-sm/relaxed wrap-break-word
             group-data-[align=end]/bubble:self-end
             [button]:text-left
             [button,a]:transition-colors [button,a]:outline-none
-            [button,a]:focus-visible:border-ring [button,a]:focus-visible:ring-2
-            [button,a]:focus-visible:ring-ring/30
+            [button,a]:focus-visible:border-ring [button,a]:focus-visible:ring-3
+            [button,a]:focus-visible:ring-ring/50
           `,
           className,
         ),
@@ -126,11 +121,7 @@ function BubbleContent({
 }
 
 const bubbleReactionsVariants = cva({
-  base: `
-    absolute z-10 flex w-fit shrink-0 items-center justify-center gap-1
-    rounded-full bg-muted px-1.5 py-0.5 text-xs ring-2 ring-card
-    has-[button]:p-0
-  `,
+  base: 'absolute z-10 flex w-fit shrink-0 items-center justify-center gap-1 rounded-full bg-muted px-1.5 py-0.5 text-sm ring-3 ring-card has-[button]:p-0',
   variants: {
     side: {
       top: 'top-0 -translate-y-3/4',

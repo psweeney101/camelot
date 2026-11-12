@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { loadHighlighter } from '../components/highlighter';
+import { loadHighlighter } from '../utils/highlighter';
 
 export function useHighlightedCode(value: string, language: string) {
   // A trailing newline would render as an extra empty line.

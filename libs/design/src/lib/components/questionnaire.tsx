@@ -11,7 +11,7 @@ function Questionnaire({
   return (
     <QuestionnairePrimitive.Root
       data-slot="questionnaire"
-      className={cn('flex w-full min-w-0 flex-col gap-4', className)}
+      className={cn('flex w-full min-w-0 flex-col gap-6', className)}
       {...props}
     />
   );
@@ -26,8 +26,8 @@ function QuestionnaireProgress({
       data-slot="questionnaire-progress"
       className={cn(
         `
-          min-h-lh w-fit min-w-[14ch] text-[0.625rem] font-medium
-          text-muted-foreground tabular-nums
+          min-h-lh w-fit min-w-[14ch] text-xs font-medium text-muted-foreground
+          tabular-nums
         `,
         className,
       )}
@@ -44,7 +44,7 @@ function QuestionnaireItem({
     <QuestionnairePrimitive.Item
       data-slot="questionnaire-item"
       className={cn(
-        'flex min-w-0 flex-col gap-3 border-0 p-0 outline-none',
+        'flex min-w-0 flex-col gap-5 border-0 p-0 outline-none',
         className,
       )}
       {...props}
@@ -61,8 +61,8 @@ function QuestionnaireTitle({
       data-slot="questionnaire-title"
       className={cn(
         `
-          text-sm font-semibold text-pretty
-          [&:not(:has(~[data-slot=questionnaire-description]))]:mb-3
+          font-heading text-base font-semibold text-pretty
+          [&:not(:has(~[data-slot=questionnaire-description]))]:mb-5
         `,
         className,
       )}
@@ -78,10 +78,7 @@ function QuestionnaireDescription({
   return (
     <QuestionnairePrimitive.Description
       data-slot="questionnaire-description"
-      className={cn(
-        'text-xs/relaxed text-pretty text-muted-foreground',
-        className,
-      )}
+      className={cn('text-sm text-pretty text-muted-foreground', className)}
       {...props}
     />
   );
@@ -95,7 +92,7 @@ function QuestionnaireChoices({
     <QuestionnairePrimitive.Choices
       data-slot="questionnaire-choices"
       className={cn(
-        'group/questionnaire-choices grid min-w-0 gap-1.5',
+        'group/questionnaire-choices grid min-w-0 gap-3',
         className,
       )}
       {...props}
@@ -114,14 +111,17 @@ function QuestionnaireChoice({
       className={cn(
         `
           group/questionnaire-choice relative flex min-h-11 cursor-pointer
-          items-start gap-2.5 rounded-xl border border-input px-3 py-2.5
-          text-start text-xs/relaxed transition-colors outline-none select-none
-          hover:bg-input/40
+          items-start gap-3 rounded-md border border-input bg-transparent px-4
+          py-3.5 text-start text-sm shadow-xs transition-colors outline-none
+          select-none
+          hover:bg-muted/50
           has-[>input:focus-visible]:border-ring
-          has-[>input:focus-visible]:ring-2
-          has-[>input:focus-visible]:ring-ring/30
+          has-[>input:focus-visible]:ring-3
+          has-[>input:focus-visible]:ring-ring/50
           data-invalid:border-destructive
-          data-checked:border-primary/40 data-checked:bg-primary/10
+          dark:bg-input/20
+          data-checked:border-primary/40 data-checked:bg-muted
+          dark:data-checked:bg-muted
         `,
         `
           data-disabled:pointer-events-none data-disabled:cursor-not-allowed
@@ -140,8 +140,8 @@ function QuestionnaireChoice({
         data-slot="questionnaire-choice-indicator"
         className="
           pointer-events-none relative flex size-4 shrink-0
-          translate-y-[--spacing(0.45)] items-center justify-center
-          rounded-[4px] border border-input
+          translate-y-[--spacing(0.45)] items-center justify-center rounded-lg
+          border border-input
           group-has-data-[slot=questionnaire-choice-description]/questionnaire-choice:translate-y-0.5
           group-data-[type=radio]/questionnaire-choice:rounded-full
           group-data-checked/questionnaire-choice:border-primary
@@ -170,17 +170,17 @@ function QuestionnaireChoice({
       </span>
       <QuestionnairePrimitive.ChoiceLabel
         data-slot="questionnaire-choice-label"
-        className="flex min-w-0 flex-1 flex-col gap-0.5 leading-snug"
+        className="flex min-w-0 flex-1 flex-col gap-1 leading-snug"
       >
         {children}
       </QuestionnairePrimitive.ChoiceLabel>
       <QuestionnairePrimitive.ChoiceShortcut
         data-slot="questionnaire-choice-shortcut"
         className="
-          pointer-events-none ms-auto hidden size-4 shrink-0
-          translate-y-[--spacing(0.45)] items-center justify-center rounded-sm
-          border border-input bg-background/80 font-mono text-[0.5625rem]
-          leading-none font-medium text-muted-foreground
+          pointer-events-none ms-auto hidden size-5 shrink-0
+          translate-y-[--spacing(0.45)] items-center justify-center rounded-md
+          border border-input bg-background font-mono text-[0.625rem]
+          leading-none font-medium text-muted-foreground shadow-xs
           group-has-data-[slot=questionnaire-choice-description]/questionnaire-choice:translate-y-0.5
           group-data-shortcut/questionnaire-choice:inline-flex
         "
@@ -215,17 +215,17 @@ function QuestionnaireInput({
         data-slot="questionnaire-input"
         className={cn(
           `
-            h-7 min-h-11 w-full min-w-0 rounded-md border border-input
-            bg-input/20 px-2 py-0.5 text-sm
+            h-9 min-h-11 w-full min-w-0 rounded-md border border-input
+            bg-transparent px-2.5 py-1 text-base shadow-xs
             transition-[color,box-shadow,background-color] outline-none
-            focus-visible:border-ring focus-visible:ring-2
-            focus-visible:ring-ring/30
+            focus-visible:border-ring focus-visible:ring-3
+            focus-visible:ring-ring/50
             disabled:pointer-events-none disabled:cursor-not-allowed
             disabled:opacity-50
-            aria-invalid:border-destructive aria-invalid:ring-2
+            aria-invalid:border-destructive aria-invalid:ring-3
             aria-invalid:ring-destructive/20
             sm:min-h-0
-            md:text-xs/relaxed
+            md:text-sm
             dark:bg-input/30
             dark:aria-invalid:border-destructive/50
             dark:aria-invalid:ring-destructive/40
@@ -249,7 +249,7 @@ function QuestionnaireError({
   return (
     <QuestionnairePrimitive.Error
       data-slot="questionnaire-error"
-      className={cn('mt-2 text-xs/relaxed text-destructive', className)}
+      className={cn('text-sm text-destructive', className)}
       {...props}
     />
   );
@@ -265,8 +265,8 @@ function QuestionnaireActions({
       className={cn(
         `
           grid min-h-11 w-full grid-cols-[minmax(0,1fr)_auto_auto] items-center
-          gap-1.5
-          sm:min-h-7
+          gap-2
+          sm:min-h-9
         `,
         className,
       )}
@@ -290,10 +290,7 @@ function QuestionnairePrevious({
       data-variant={variant}
       className={cn(
         buttonVariants({ size, variant }),
-        `
-          col-start-1 row-start-1 min-h-11 justify-self-start
-          sm:min-h-0
-        `,
+        'col-start-1 row-start-1 min-h-11 justify-self-start sm:min-h-0',
         className,
       )}
       {...props}
@@ -318,10 +315,7 @@ function QuestionnaireSkip({
       data-variant={variant}
       className={cn(
         buttonVariants({ size, variant }),
-        `
-          col-start-2 row-start-1 min-h-11 justify-self-end
-          sm:min-h-0
-        `,
+        'col-start-2 row-start-1 min-h-11 justify-self-end sm:min-h-0',
         className,
       )}
       {...props}
@@ -346,10 +340,7 @@ function QuestionnaireNext({
       data-variant={variant}
       className={cn(
         buttonVariants({ size, variant }),
-        `
-          col-start-3 row-start-1 min-h-11 justify-self-end
-          sm:min-h-0
-        `,
+        'col-start-3 row-start-1 min-h-11 justify-self-end sm:min-h-0',
         className,
       )}
       {...props}
@@ -374,10 +365,7 @@ function QuestionnaireSubmit({
       data-variant={variant}
       className={cn(
         buttonVariants({ size, variant }),
-        `
-          col-start-3 row-start-1 min-h-11 justify-self-end
-          sm:min-h-0
-        `,
+        'col-start-3 row-start-1 min-h-11 justify-self-end sm:min-h-0',
         className,
       )}
       {...props}

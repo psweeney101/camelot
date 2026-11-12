@@ -7,13 +7,7 @@ import * as React from 'react';
 import { Button } from './button';
 
 const codeBlockVariants = cva({
-  base: `
-    group/code-block relative flex w-full min-w-0 flex-col overflow-hidden
-    rounded-md text-sm
-    has-[>[data-slot=code-block-content]:focus-visible]:ring-2
-    has-[>[data-slot=code-block-content]:focus-visible]:ring-ring/30
-    data-[size=sm]:text-xs
-  `,
+  base: 'group/code-block relative flex w-full min-w-0 flex-col overflow-hidden rounded-lg text-sm has-[>[data-slot=code-block-content]:focus-visible]:ring-3 has-[>[data-slot=code-block-content]:focus-visible]:ring-ring/50 data-[size=sm]:text-xs',
   variants: {
     variant: {
       default: `
@@ -56,10 +50,10 @@ function CodeBlockHeader({ className, ...props }: React.ComponentProps<'div'>) {
       data-slot="code-block-header"
       className={cn(
         `
-          flex min-w-0 shrink-0 items-center gap-2 px-3 pt-3
+          flex min-w-0 shrink-0 items-center gap-2 px-4 pt-4
           text-muted-foreground
-          group-data-[size=sm]/code-block:px-2
-          group-data-[size=sm]/code-block:pt-2
+          group-data-[size=sm]/code-block:px-3
+          group-data-[size=sm]/code-block:pt-3
           group-data-[variant=destructive]/code-block:text-destructive
           *:has-[>[data-slot=code-block-title]]:min-w-0
         `,
@@ -76,10 +70,12 @@ function CodeBlockTitle({ className, ...props }: React.ComponentProps<'div'>) {
       data-slot="code-block-title"
       className={cn(
         `
-          min-w-0 truncate font-sans text-xs font-medium text-foreground
+          min-w-0 truncate font-sans text-sm font-medium text-foreground
+          group-data-[size=sm]/code-block:text-xs
           group-data-[variant=destructive]/code-block:text-destructive
           [&_svg]:pointer-events-none [&_svg]:inline-block [&_svg]:align-middle
-          [&_svg:not([class*='size-'])]:size-3.5
+          [&_svg:not([class*='size-'])]:size-4
+          group-data-[size=sm]/code-block:[&_svg:not([class*='size-'])]:size-3.5
           *:[svg]:me-1.5
         `,
         className,
@@ -100,14 +96,14 @@ function CodeBlockActions({
         `
           -my-1 ms-auto -me-1.5 flex shrink-0 items-center gap-1
           [[data-slot=code-block]>&]:absolute
-          [[data-slot=code-block]>&]:inset-e-2 [[data-slot=code-block]>&]:top-2
+          [[data-slot=code-block]>&]:inset-e-3 [[data-slot=code-block]>&]:top-3
           [[data-slot=code-block]>&]:z-10 [[data-slot=code-block]>&]:m-0
           [[data-slot=code-block]>&]:opacity-0
           [[data-slot=code-block]>&]:transition-opacity
           [[data-slot=code-block]>&]:group-focus-within/code-block:opacity-100
           [[data-slot=code-block]>&]:group-hover/code-block:opacity-100
-          group-data-[size=sm]/code-block:[[data-slot=code-block]>&]:inset-e-1.5
-          group-data-[size=sm]/code-block:[[data-slot=code-block]>&]:top-1.5
+          group-data-[size=sm]/code-block:[[data-slot=code-block]>&]:inset-e-2
+          group-data-[size=sm]/code-block:[[data-slot=code-block]>&]:top-2
           [[data-slot=code-block]>&]:pointer-coarse:opacity-100
           [[data-slot=code-block]>&]:*:[button]:bg-background
           [[data-slot=code-block]>&]:*:[button]:ring-1
@@ -191,11 +187,11 @@ function CodeBlockContent({
       style={{ counterReset: `line ${startLine - 1}`, ...style }}
       className={cn(
         `
-          min-h-0 min-w-0 scroll-fade-x scrollbar-thin overflow-auto p-3
+          min-h-0 min-w-0 scroll-fade-x scrollbar-thin overflow-auto p-4
           text-start font-mono leading-relaxed outline-none
           group-has-data-[slot=code-block-footer]/code-block:pb-2
           group-has-data-[slot=code-block-header]/code-block:pt-2
-          group-data-[size=sm]/code-block:p-2
+          group-data-[size=sm]/code-block:p-3
           group-data-[size=sm]/code-block:group-has-data-[slot=code-block-header]/code-block:pt-1.5
           data-wrap:scroll-fade-y data-wrap:wrap-break-word
           data-wrap:whitespace-pre-wrap
@@ -226,30 +222,12 @@ function CodeBlockContent({
 }
 
 const codeBlockLineVariants = cva({
-  base: `
-    relative -mx-3 block min-h-lh px-3
-    group-data-[size=sm]/code-block:-mx-2 group-data-[size=sm]/code-block:px-2
-    before:min-w-6 before:text-end before:text-muted-foreground
-    after:absolute after:inset-s-1 after:top-0 after:text-muted-foreground
-    after:select-none
-    in-data-numbered:col-span-2 in-data-numbered:grid
-    in-data-numbered:grid-cols-subgrid in-data-numbered:gap-x-3
-    in-data-numbered:[counter-increment:line]
-    in-data-numbered:before:content-[counter(line)]
-    in-data-numbered:before:select-none
-    in-data-numbered:supports-[content:counter(line)/'']:before:content-[counter(line)/'']
-  `,
+  base: "relative -mx-4 block min-h-lh px-4 group-data-[size=sm]/code-block:-mx-3 group-data-[size=sm]/code-block:px-3 before:min-w-6 before:text-end before:text-muted-foreground after:absolute after:start-1 after:top-0 after:text-muted-foreground after:select-none in-data-numbered:col-span-2 in-data-numbered:grid in-data-numbered:grid-cols-subgrid in-data-numbered:gap-x-3 in-data-numbered:[counter-increment:line] in-data-numbered:before:content-[counter(line)] in-data-numbered:before:select-none in-data-numbered:supports-[content:counter(line)_/_'']:before:content-[counter(line)_/_'']",
   variants: {
     variant: {
       default: '',
-      added: `
-        bg-muted
-        after:content-['+']
-      `,
-      removed: `
-        bg-destructive/10
-        after:text-destructive after:content-['−']
-      `,
+      added: "bg-muted after:content-['+']",
+      removed: "bg-destructive/10 after:text-destructive after:content-['−']",
       highlighted: 'bg-muted',
     },
   },
@@ -291,10 +269,10 @@ function CodeBlockFooter({ className, ...props }: React.ComponentProps<'div'>) {
       data-slot="code-block-footer"
       className={cn(
         `
-          flex min-w-0 shrink-0 items-center gap-2 px-3 pb-3
+          flex min-w-0 shrink-0 items-center gap-2 px-4 pb-4
           text-muted-foreground
-          group-data-[size=sm]/code-block:px-2
-          group-data-[size=sm]/code-block:pb-2
+          group-data-[size=sm]/code-block:px-3
+          group-data-[size=sm]/code-block:pb-3
         `,
         className,
       )}

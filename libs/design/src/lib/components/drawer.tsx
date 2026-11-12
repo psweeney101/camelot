@@ -1,5 +1,3 @@
-'use client';
-
 import { Drawer as DrawerPrimitive } from '@base-ui/react/drawer';
 import { cn } from 'cn';
 import * as React from 'react';
@@ -72,7 +70,7 @@ function DrawerOverlay({
       data-slot="drawer-overlay"
       className={cn(
         `
-          fixed inset-0 z-50 min-h-dvh bg-black/80
+          fixed inset-0 z-50 min-h-dvh bg-black/10
           opacity-[max(var(--drawer-overlay-min-opacity,0),calc(1-var(--drawer-swipe-progress)))]
           transition-opacity duration-450 ease-[cubic-bezier(0.32,0.72,0,1)]
           select-none
@@ -118,10 +116,10 @@ function DrawerSwipeHandle({
           group-data-[swipe-direction=up]/drawer-popup:order-last
           group-data-[swipe-direction=up]/drawer-popup:items-start
           after:block after:shrink-0 after:rounded-full after:bg-muted
-          group-data-[swipe-axis=x]/drawer-popup:after:h-12
-          group-data-[swipe-axis=x]/drawer-popup:after:w-1
-          group-data-[swipe-axis=y]/drawer-popup:after:h-1
-          group-data-[swipe-axis=y]/drawer-popup:after:w-12
+          group-data-[swipe-axis=x]/drawer-popup:after:h-[100px]
+          group-data-[swipe-axis=x]/drawer-popup:after:w-1.5
+          group-data-[swipe-axis=y]/drawer-popup:after:h-1.5
+          group-data-[swipe-axis=y]/drawer-popup:after:w-[100px]
           active:cursor-grabbing
         `,
         className,
@@ -165,13 +163,18 @@ function DrawerContent({
               max-h-(--drawer-content-max-height,none) min-h-0
               w-(--drawer-content-width,auto)
               transform-[translate3d(var(--translate-x,0px),var(--translate-y,0px),0)_scale(var(--stack-scale))]
-              flex-col rounded-xl border border-popover bg-popover
-              text-xs/relaxed text-popover-foreground
+              flex-col bg-popover text-sm text-popover-foreground
               transition-[transform,height,opacity,filter] duration-450
               ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform
-              outline-none select-none [--drawer-bleed-background:transparent]
-              [--drawer-inset:--spacing(2)] [interpolate-size:allow-keywords]
-              dark:border-border
+              outline-none select-none [interpolate-size:allow-keywords]
+              data-[swipe-direction=down]:rounded-t-xl
+              data-[swipe-direction=down]:border-t
+              data-[swipe-direction=left]:rounded-r-xl
+              data-[swipe-direction=left]:border-r
+              data-[swipe-direction=right]:rounded-l-xl
+              data-[swipe-direction=right]:border-l
+              data-[swipe-direction=up]:rounded-b-xl
+              data-[swipe-direction=up]:border-b
             `,
             // Nested.
             `
@@ -287,9 +290,9 @@ function DrawerHeader({ className, ...props }: React.ComponentProps<'div'>) {
       data-slot="drawer-header"
       className={cn(
         `
-          flex shrink-0 flex-col gap-1 p-4 pb-0
+          flex shrink-0 flex-col gap-0.5 p-4 pb-0
           group-data-[swipe-axis=y]/drawer-popup:text-center
-          md:text-left
+          md:gap-1.5 md:text-left
         `,
         className,
       )}
@@ -312,7 +315,7 @@ function DrawerTitle({ className, ...props }: DrawerPrimitive.Title.Props) {
   return (
     <DrawerPrimitive.Title
       data-slot="drawer-title"
-      className={cn('text-sm font-medium text-foreground', className)}
+      className={cn('font-heading font-medium text-foreground', className)}
       {...props}
     />
   );
@@ -325,10 +328,7 @@ function DrawerDescription({
   return (
     <DrawerPrimitive.Description
       data-slot="drawer-description"
-      className={cn(
-        'text-xs/relaxed text-balance text-muted-foreground',
-        className,
-      )}
+      className={cn('text-sm text-balance text-muted-foreground', className)}
       {...props}
     />
   );

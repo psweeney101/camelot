@@ -1,3 +1,5 @@
+'use client';
+
 import { PreviewCard as PreviewCardPrimitive } from '@base-ui/react/preview-card';
 import { cn } from 'cn';
 
@@ -36,8 +38,8 @@ function HoverCardContent({
           data-slot="hover-card-content"
           className={cn(
             `
-              z-50 w-72 origin-(--transform-origin) rounded-lg bg-popover p-2.5
-              text-xs/relaxed text-popover-foreground shadow-md ring-1
+              z-50 w-64 origin-(--transform-origin) rounded-lg bg-popover p-4
+              text-sm text-popover-foreground shadow-md ring-1
               ring-foreground/10 outline-hidden duration-100
               data-[side=bottom]:slide-in-from-top-2
               data-[side=inline-end]:slide-in-from-left-2

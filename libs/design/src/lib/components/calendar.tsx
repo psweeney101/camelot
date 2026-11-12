@@ -1,5 +1,3 @@
-'use client';
-
 import { cn } from 'cn';
 import {
   ChevronLeftIcon,
@@ -36,7 +34,7 @@ function Calendar({
       className={cn(
         `
           group/calendar bg-background p-3 [--cell-radius:var(--radius-md)]
-          [--cell-size:--spacing(6)]
+          [--cell-size:--spacing(8)]
           in-data-[slot=card-content]:bg-transparent
           in-data-[slot=popover-content]:bg-transparent
         `,
@@ -54,10 +52,7 @@ function Calendar({
       classNames={{
         root: cn('w-fit', defaultClassNames.root),
         months: cn(
-          `
-            relative flex flex-col gap-4
-            md:flex-row
-          `,
+          'relative flex flex-col gap-4 md:flex-row',
           defaultClassNames.months,
         ),
         month: cn('flex w-full flex-col gap-4', defaultClassNames.month),
@@ -70,18 +65,12 @@ function Calendar({
         ),
         button_previous: cn(
           buttonVariants({ variant: buttonVariant }),
-          `
-            size-(--cell-size) p-0 select-none
-            aria-disabled:opacity-50
-          `,
+          'size-(--cell-size) p-0 select-none aria-disabled:opacity-50',
           defaultClassNames.button_previous,
         ),
         button_next: cn(
           buttonVariants({ variant: buttonVariant }),
-          `
-            size-(--cell-size) p-0 select-none
-            aria-disabled:opacity-50
-          `,
+          'size-(--cell-size) p-0 select-none aria-disabled:opacity-50',
           defaultClassNames.button_next,
         ),
         month_caption: cn(
@@ -173,10 +162,7 @@ function Calendar({
           defaultClassNames.today,
         ),
         outside: cn(
-          `
-            text-muted-foreground
-            aria-selected:text-muted-foreground
-          `,
+          'text-muted-foreground aria-selected:text-muted-foreground',
           defaultClassNames.outside,
         ),
         disabled: cn(

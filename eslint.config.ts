@@ -55,7 +55,13 @@ export default defineConfig([
           ],
         },
       ],
-      'better-tailwindcss/enforce-consistent-line-wrapping': 'off',
+      'better-tailwindcss/enforce-consistent-line-wrapping': [
+        'error',
+        {
+          preferSingleLine: true,
+          strictness: 'loose',
+        },
+      ],
       ...imports.flatConfigs.recommended.rules,
       'import/no-unresolved': 'off',
       'import/order': [

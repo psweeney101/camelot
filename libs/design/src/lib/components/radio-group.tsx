@@ -1,5 +1,3 @@
-'use client';
-
 import { Radio as RadioPrimitive } from '@base-ui/react/radio';
 import { RadioGroup as RadioGroupPrimitive } from '@base-ui/react/radio-group';
 import { cn } from 'cn';
@@ -49,9 +47,9 @@ function RadioGroupItem({ className, ...props }: RadioPrimitive.Root.Props) {
       >
         <span
           className="
-          absolute top-1/2 left-1/2 size-2 -translate-1/2 rounded-full
-          bg-primary-foreground
-        "
+            absolute top-1/2 left-1/2 size-2 -translate-1/2 rounded-full
+            bg-primary-foreground
+          "
         />
       </RadioPrimitive.Indicator>
     </RadioPrimitive.Root>
