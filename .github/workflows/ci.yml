@@ -45,6 +45,9 @@ jobs:
       # Clean install from package-lock.json
       - run: npm ci
 
+      # Hotfix: https://github.com/nrwl/nx/issues/37815
+      - run: npx nx reset --onlyCloud || true
+
       # Sets NX_BASE and NX_HEAD so `affected` commands compare against the right commits
       - uses: nrwl/nx-set-shas@v4
 

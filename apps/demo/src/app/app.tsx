@@ -34,7 +34,6 @@ import {
 import {
   Bell,
   Calendar,
-  Castle,
   ClipboardList,
   Folder,
   House,
@@ -46,6 +45,7 @@ import {
   Search,
   ShieldCheck,
   UserCheck,
+  X,
   type LucideIcon,
 } from 'lucide-react';
 import * as React from 'react';
@@ -166,16 +166,16 @@ function AppSidebar({
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg">
+            <SidebarMenuButton size="lg" className="gap-4">
               <div
                 className="
                   flex aspect-square size-8 items-center justify-center
-                  rounded-lg bg-primary text-primary-foreground
+                  rounded-lg
                 "
               >
-                <Castle className="size-4" />
+                <img src="logo.png" alt="Castle logo"></img>
               </div>
-              <div className="grid flex-1 text-left text-sm/tight">
+              <div className="grid flex-1 pt-1.5 text-left text-sm/tight">
                 <span className="truncate font-semibold">Camelot</span>
               </div>
             </SidebarMenuButton>
@@ -225,6 +225,7 @@ function AppSidebar({
 /* -------------------------------------------------------------------------- */
 
 function TopNav({ page }: { page: string }) {
+  const [query, setQuery] = React.useState('');
   const group = navGroups.find(g => g.items.some(i => i.title === page))?.label;
 
   return (
@@ -237,17 +238,16 @@ function TopNav({ page }: { page: string }) {
     >
       <SidebarTrigger size="icon-lg" />
 
-      <Breadcrumb className="hidden sm:block">
+      <Breadcrumb className="hidden lg:block">
         <BreadcrumbList>
           {group && (
             <>
-              <BreadcrumbSeparator />
               <BreadcrumbItem className="text-muted-foreground">
                 {group}
               </BreadcrumbItem>
+              <BreadcrumbSeparator />
             </>
           )}
-          <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbPage>{page}</BreadcrumbPage>
           </BreadcrumbItem>
@@ -264,20 +264,32 @@ function TopNav({ page }: { page: string }) {
           />
           <Input
             type="search"
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            onKeyDown={e => {
+              if (e.key === 'Escape') setQuery('');
+            }}
             placeholder="Quick Search…"
             aria-label="Search"
-            className="h-9 w-64 pl-8"
+            className="h-9 w-64 px-8"
           />
+          {query && (
+            <button
+              type="button"
+              aria-label="Clear search"
+              onClick={() => setQuery('')}
+              className="
+                absolute top-1/2 right-2 -translate-y-1/2 rounded-sm
+                text-muted-foreground transition-colors
+                hover:text-foreground
+                focus-visible:ring-2 focus-visible:ring-ring/50
+                focus-visible:outline-none
+              "
+            >
+              <X className="size-4" />
+            </button>
+          )}
         </div>
-
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          aria-label="Search"
-        >
-          <Search />
-        </Button>
 
         <ThemeToggle />
 

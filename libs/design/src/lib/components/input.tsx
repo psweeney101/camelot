@@ -25,6 +25,7 @@ function Input({ className, type, ...props }: React.ComponentProps<'input'>) {
           dark:bg-input/30
           dark:aria-invalid:border-destructive/50
           dark:aria-invalid:ring-destructive/40
+          [&::-webkit-search-cancel-button]:appearance-none
         `,
         className,
       )}
